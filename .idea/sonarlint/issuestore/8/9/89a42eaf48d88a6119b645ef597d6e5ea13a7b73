@@ -1,0 +1,9 @@
+
+r
+java:S11040"UMake isEnabled a static final constant or non-public and provide accessors if needed.(ôÏò°8Ã›÷îß1
+S
+java:S1128"7Remove this unused import 'jakarta.persistence.Column'.(Ó‰ÙE8à¾äîß1
+P
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8îöîß1
+L
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8îöîß1

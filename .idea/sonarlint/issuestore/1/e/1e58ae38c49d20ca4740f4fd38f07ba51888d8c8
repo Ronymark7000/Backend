@@ -1,0 +1,4 @@
+
+q	java:S116"URename this field "SECRET_KEY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ÷õ»8ŞËÀÛÜ1
+s	java:S116"WRename this field "EXPIRE_TOKEN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞÊ‘Ä8ŞËÀÛÜ1
+L	java:S106?"+Replace this use of System.out by a logger.(ÚìĞÌÿÿÿÿÿ8ØşŞãÜ1
