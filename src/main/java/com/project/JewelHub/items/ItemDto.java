@@ -2,9 +2,10 @@ package com.project.JewelHub.items;
 
 import lombok.*;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class ItemDto {
     private int itemCode;
     private String itemName;

@@ -15,5 +15,6 @@ public class UserDto {
     private String email;
     private String role;
     private long contact;
+    private boolean enabled;
 
 }

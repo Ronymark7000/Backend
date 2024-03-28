@@ -92,7 +92,7 @@ public class UserService {
         Optional<User> optionalUser = userRepo.findById(userId);
 
         User user = optionalUser.get();
-        return new UserDto(user.getUserId(),user.getFirstname(), user.getLastname(), user.getEmail(), user.getRole(), user.getContact());
+        return new UserDto(user.getUserId(),user.getFirstname(), user.getLastname(), user.getEmail(), user.getRole(), user.getContact(), user.isEnabled());
     }
 
     public User createUser(User user) {
@@ -116,6 +116,7 @@ public class UserService {
             existingUser.setPassword(updatedUser.getPassword());
             existingUser.setRole(updatedUser.getRole());
             existingUser.setContact(updatedUser.getContact());
+            existingUser.setEnabled(updatedUser.isEnabled());
 
             // Save the updated user back to the database
             return userRepo.save(existingUser);

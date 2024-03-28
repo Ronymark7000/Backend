@@ -1,19 +1,19 @@
 package com.project.JewelHub.items;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "item")
 public class Item {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "item_code")
     private int itemCode;
 
     @Column (nullable = false, length = 30)
@@ -27,19 +27,18 @@ public class Item {
     private String material;
 
     @Column (nullable = false, length = 5)
-    @NotEmpty
-    @NotBlank (message = "Enter the Karat of the Item")
+    @NotNull(message = "Enter the Karat of the Item")
     private int karat;
 
-    @NotEmpty
+    @NotNull
     @DecimalMin(value = "0.1", message = "Gross weight invalid")
     private double grossWeight;
 
     @NotEmpty
-    @Pattern(regexp = "^\\d+(\\.\\d+)?%$",message = "Percentage should be in 'n%' or 'n.n%'")
+//    @Pattern(regexp = "^\\d+(\\.\\d+)?%$",message = "Percentage should be in 'n%' or 'n.n%'")
     private String wastage;
 
-    @NotEmpty
+    @NotNull
     @DecimalMin(value = "0.1", message = "Net weight invalid")
     private double netWeight;
 
@@ -59,4 +58,23 @@ public class Item {
     @NotNull(message = "Final Price is Required")
     @DecimalMin(value = "0.1", message = "Price must be greater than 0.0 or equal")
     private int totalCost;
+
+    @Column(name = "image")
+    private String itemImageUrl;
+
+//    public Item( String itemName, String material, int karat, double grossWeight, String wastage, double netWeight, int goldPrice, int costOfStone, int manufactureCost, String description, int totalCost, String itemImageUrl) {
+//
+//        this.itemName = itemName;
+//        this.material = material;
+//        this.karat = karat;
+//        this.grossWeight = grossWeight;
+//        this.wastage = wastage;
+//        this.netWeight = netWeight;
+//        this.goldPrice = goldPrice;
+//        this.costOfStone = costOfStone;
+//        this.manufactureCost = manufactureCost;
+//        this.description = description;
+//        this.totalCost = totalCost;
+//        this.itemImageUrl = itemImageUrl;
+//    }
 }

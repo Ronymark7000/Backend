@@ -1,6 +1,6 @@
 
 z
-java:S3655^"XCall "optionalUser.isPresent()" or "!optionalUser.isEmpty()" before accessing the value.(øú·Éýÿÿÿÿ8Þíƒ÷ß1
+java:S3655^"XCall "optionalUser.isPresent()" or "!optionalUser.isEmpty()" before accessing the value.(øú·Éýÿÿÿÿ8ëÕ›ïç1
 {	java:S116"_Rename this field "SERVER_ERROR_MESSAGE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é¶Ö›8ßíƒ÷ß1
 }	java:S116 "\Rename this field "SERVER_ERROR_CODE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Çìôÿÿÿÿÿ8ßíƒ÷ß1
 >
@@ -9,4 +9,4 @@ C
 java:S1170 "!Make this final field static too.(¡Çìôÿÿÿÿÿ8ßíƒ÷ß1
 G	java:S106P"+Replace this use of System.out by a logger.(¿Éšª8çíƒ÷ß1
 s
-java:S1128"QRemove this unused import 'org.springframework.web.bind.annotation.RequestParam'.(Â¬À·ùÿÿÿÿ8ëíƒ÷ß1
+java:S1128"QRemove this unused import 'org.springframework.web.bind.annotation.RequestParam'.(Â¬À·ùÿÿÿÿ8…Ö›ïç1

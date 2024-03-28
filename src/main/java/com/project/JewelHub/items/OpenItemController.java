@@ -38,7 +38,7 @@ public class OpenItemController {
     @GetMapping("/item/{itemCode}")
     private ResponseEntity<ResponseWrapper> getItemByCode(@PathVariable("itemCode") int itemCode) {
 
-        ItemDto item = itemService.getItemByCode(itemCode);
+        Item item = itemService.getItemByCode(itemCode);
         if (item != null){
             ResponseWrapper response = new ResponseWrapper();
             response.setStatusCode(HttpStatus.OK.value());

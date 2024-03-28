@@ -86,8 +86,8 @@ public class UserController {
 
             String token = jwtService.generateToken(user);
             final Cookie cookie = new Cookie("token", token);
-            cookie.setSecure(false);
-            cookie.setHttpOnly(false);
+            cookie.setSecure(true);
+            cookie.setHttpOnly(true);
             cookie.setMaxAge(COOKIE_EXPIRE);
             cookie.setPath("/api");
             response.addCookie(cookie);

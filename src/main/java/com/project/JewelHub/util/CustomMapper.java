@@ -20,7 +20,7 @@ import java.util.Optional;
 public class CustomMapper {
     public static UserDto mapUserDto(User user){
 
-        return new UserDto(user.getUserId(),user.getFirstname(), user.getLastname(), user.getEmail(), user.getRole(), user.getContact());
+        return new UserDto(user.getUserId(),user.getFirstname(), user.getLastname(), user.getEmail(), user.getRole(), user.getContact(), user.isEnabled());
     }
 
     public static List<UserDto> mapUserDtos(List<User> users) {
@@ -32,24 +32,28 @@ public class CustomMapper {
         return userDtos;
     }
 
-    public static List<ItemDto> mapItemDto(List<Item> items) {
+    public static ItemDto mapItemDto(Item item) {
+        return new ItemDto(
+                item.getItemCode(),
+                item.getItemName(),
+                item.getMaterial(),
+                item.getKarat(),
+                item.getGrossWeight(),
+                item.getWastage(),
+                item.getNetWeight(),
+                item.getGoldPrice(),
+                item.getCostOfStone(),
+                item.getManufactureCost(),
+                item.getDescription(),
+                item.getTotalCost()
+        );
+    }
+
+    public static List<ItemDto> mapItemDtos(List<Item> items) {
 
         List<ItemDto> itemDtos = new ArrayList<>();
         for (Item item : items) {
-            itemDtos.add(new ItemDto(
-                    item.getItemCode(),
-                    item.getItemName(),
-                    item.getMaterial(),
-                    item.getKarat(),
-                    item.getGrossWeight(),
-                    item.getWastage(),
-                    item.getNetWeight(),
-                    item.getGoldPrice(),
-                    item.getCostOfStone(),
-                    item.getManufactureCost(),
-                    item.getDescription(),
-                    item.getTotalCost()
-            ));
+            itemDtos.add(CustomMapper.mapItemDto(item));
         }
         return itemDtos;
     }
