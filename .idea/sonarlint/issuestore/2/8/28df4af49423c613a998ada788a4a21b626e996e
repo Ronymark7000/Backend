@@ -1,12 +1,12 @@
 
 ‚
-java:S1488"`Immediately return this expression instead of assigning it to the temporary variable "itemDtos".(ïá¦ùÿÿÿÿ8¢ƒÌ«è1
+java:S1488"`Immediately return this expression instead of assigning it to the temporary variable "itemDtos".(ïá¦ùÿÿÿÿ8îâğÇè1
 z
-java:S3655%"XCall "optionalItem.isPresent()" or "!optionalItem.isEmpty()" before accessing the value.(™«ªíıÿÿÿÿ8½ƒÌ«è1
-G	java:S106<"+Replace this use of System.out by a logger.(‹ÑíÀ8ÆƒÌ«è1
-L	java:S106N"+Replace this use of System.out by a logger.(ÁøÓ¬øÿÿÿÿ8ÎƒÌ«è1
-L	java:S106"+Replace this use of System.out by a logger.(ââª¤ùÿÿÿÿ8ÎƒÌ«è1
-^	java:S125€"<This block of commented-out lines of code should be removed.(Ïñ×íûÿÿÿÿ8ÎƒÌ«è1
-H	java:S106‚"+Replace this use of System.out by a logger.(ßÑÀé8ššĞ«è1
+java:S3655%"XCall "optionalItem.isPresent()" or "!optionalItem.isEmpty()" before accessing the value.(™«ªíıÿÿÿÿ8¶¶ğÇè1
+G	java:S106<"+Replace this use of System.out by a logger.(‹ÑíÀ8Ì¶ğÇè1
+L	java:S106N"+Replace this use of System.out by a logger.(ÁøÓ¬øÿÿÿÿ8×¶ğÇè1
+L	java:S106"+Replace this use of System.out by a logger.(ââª¤ùÿÿÿÿ8ì¶ğÇè1
+^	java:S125€"<This block of commented-out lines of code should be removed.(Ïñ×íûÿÿÿÿ8ì¶ğÇè1
+H	java:S106‚"+Replace this use of System.out by a logger.(ßÑÀé8í¶ğÇè1
 l
-java:S1128"JRemove this unused import 'org.springframework.core.io.ClassPathResource'.(İ¹º§ıÿÿÿÿ8ĞƒÌ«è1
+java:S1128"JRemove this unused import 'org.springframework.core.io.ClassPathResource'.(İ¹º§ıÿÿÿÿ8ª¶¼Ìè1

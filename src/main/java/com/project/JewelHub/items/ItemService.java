@@ -77,7 +77,7 @@ public class ItemService{
 
         System.out.println("Item Name"+savedItem.getItemName());
 
-        return new ItemDto(savedItem.getItemCode(), savedItem.getItemName(), savedItem.getMaterial(), savedItem.getKarat(), savedItem.getGrossWeight(), savedItem.getWastage(), savedItem.getNetWeight(), savedItem.getGoldPrice(), savedItem.getCostOfStone(), savedItem.getManufactureCost(), savedItem.getDescription(), savedItem.getTotalCost());
+        return new ItemDto(savedItem.getItemCode(), savedItem.getItemName(), savedItem.getMaterial(), savedItem.getKarat(), savedItem.getGrossWeight(), savedItem.getWastage(), savedItem.getNetWeight(), savedItem.getGoldPrice(), savedItem.getCostOfStone(), savedItem.getManufactureCost(), savedItem.getDescription(), savedItem.getTotalCost(), savedItem.getItemImageUrl());
     }
 
 

@@ -19,6 +19,7 @@ public class ItemDto {
     private int manufactureCost;
     private String description;
     private int totalCost;
+    private String itemImageUrl;
 }
 
 

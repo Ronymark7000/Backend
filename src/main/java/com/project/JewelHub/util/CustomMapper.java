@@ -45,7 +45,8 @@ public class CustomMapper {
                 item.getCostOfStone(),
                 item.getManufactureCost(),
                 item.getDescription(),
-                item.getTotalCost()
+                item.getTotalCost(),
+                item.getItemImageUrl()
         );
     }
 
