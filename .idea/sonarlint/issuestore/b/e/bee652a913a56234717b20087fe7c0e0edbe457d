@@ -1,0 +1,22 @@
+
+W
+java:S1118":Add a private constructor to hide the implicit public one.(Ş†Ø8ó¦¹„é1
+X	java:S125"<This block of commented-out lines of code should be removed.(ƒËéò8û«»„é1
+N
+java:S1128",Remove this unused import 'org.jsoup.Jsoup'.(Ù±šªûÿÿÿÿ8÷¦¹„é1
+R
+java:S1128"5Remove this unused import 'org.jsoup.nodes.Document'.(ô¯É8÷¦¹„é1
+V
+java:S1128"4Remove this unused import 'org.jsoup.nodes.Element'.(ıƒ‘öşÿÿÿÿ8÷¦¹„é1
+S
+java:S1128"6Remove this unused import 'org.jsoup.select.Elements'.(ëÂè8÷¦¹„é1
+r
+java:S1128"PRemove this unused import 'org.springframework.scheduling.annotation.Scheduled'.(‚¡®Üûÿÿÿÿ8÷¦¹„é1
+l
+java:S1128"ORemove this unused import 'org.springframework.web.bind.annotation.GetMapping'.(‡¡‰Ø8÷¦¹„é1
+R
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8ø¦¹„é1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ø¦¹„é1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ø¦¹„é1

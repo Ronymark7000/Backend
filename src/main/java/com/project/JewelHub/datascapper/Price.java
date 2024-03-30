@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/storees")
 public class Price {
 
-    private final List<GoldData> goldDataList = new ArrayList<>();
+    /*private final List<GoldData> goldDataList = new ArrayList<>();
 
     @GetMapping("/scrape")
     public List<GoldData> scrapeGoldPrices() {
@@ -43,7 +43,7 @@ public class Price {
     @Scheduled(cron = "0 16 20 * * *") // Cron expression for 11:15 AM every day
     public void scrapeGoldPricesScheduled() {
         scrapeGoldPrices();
-    }
+    }*/
 
     static class GoldData {
         private String type;

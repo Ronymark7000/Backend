@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/store")
+@RequestMapping("/api/store")
 @RequiredArgsConstructor
 public class OpenItemController {
 
