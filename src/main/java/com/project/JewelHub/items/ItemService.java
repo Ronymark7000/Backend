@@ -126,7 +126,8 @@ public class ItemService{
     public String saveImageLocally(MultipartFile multipartFile) throws IOException {
         System.out.println("Is image working");
 //        final String UPLOAD_DIRS = new ClassPathResource("static/itemImage").getFile().getAbsolutePath();
-        final String UPLOAD_DIRS = "/Users/roheetshakya/Documents/Development/JewelHub/src/main/resources/static/itemImage";
+        final String UPLOAD_DIRS = "D:\\Development\\JewelHub\\src\\main\\resources\\static\\itemImage";
+
         System.out.println(UPLOAD_DIRS );
         try {
             Files.copy(multipartFile.getInputStream(), Paths.get(UPLOAD_DIRS + File.separator + multipartFile.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);

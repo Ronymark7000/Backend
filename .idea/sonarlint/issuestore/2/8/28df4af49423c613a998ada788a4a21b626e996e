@@ -1,6 +1,7 @@
 
 ‚
 java:S1488"`Immediately return this expression instead of assigning it to the temporary variable "itemDtos".(ïá¦ùÿÿÿÿ8îâğÇè1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ˆÙßôşÿÿÿÿ8Ò›Şèé1
 z
 java:S3655%"XCall "optionalItem.isPresent()" or "!optionalItem.isEmpty()" before accessing the value.(™«ªíıÿÿÿÿ8¶¶ğÇè1
 G	java:S106<"+Replace this use of System.out by a logger.(‹ÑíÀ8Ì¶ğÇè1
