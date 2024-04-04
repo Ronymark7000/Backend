@@ -48,16 +48,20 @@ public class ItemService{
                 item.getManufactureCost(),
                 item.getDescription(),
                 item.getTotalCost(),
-                item.getItemImageUrl()
+                item.getItemImageUrl(),
+                item.getItemVideoUrl()
         );
     }
 
 
 
     /*------------------------------Method to Add Jewelry Items to the Inventory---------------------*/
-    public ItemDto addItem(ItemDto itemDto, MultipartFile imageFile) throws IOException{
+    public ItemDto addItem(ItemDto itemDto, MultipartFile imageFile, MultipartFile videoFile) throws IOException{
         String itemImageUrl = saveImageLocally(imageFile);
         System.out.println("ImageUrl---->"+ itemImageUrl);
+
+        String itemVideoUrl = saveVideoLocally(videoFile);
+        System.out.println("VideoUrl---->"+ itemVideoUrl);
 
         Item newItem = new Item();
         newItem.setItemName(itemDto.getItemName());
@@ -72,12 +76,13 @@ public class ItemService{
         newItem.setDescription(itemDto.getDescription());
         newItem.setTotalCost(itemDto.getTotalCost());
         newItem.setItemImageUrl(itemImageUrl);
+        newItem.setItemVideoUrl(itemVideoUrl);
 
         Item savedItem =  itemRepo.save(newItem);
 
         System.out.println("Item Name"+savedItem.getItemName());
 
-        return new ItemDto(savedItem.getItemCode(), savedItem.getItemName(), savedItem.getMaterial(), savedItem.getKarat(), savedItem.getGrossWeight(), savedItem.getWastage(), savedItem.getNetWeight(), savedItem.getGoldPrice(), savedItem.getCostOfStone(), savedItem.getManufactureCost(), savedItem.getDescription(), savedItem.getTotalCost(), savedItem.getItemImageUrl());
+        return new ItemDto(savedItem.getItemCode(), savedItem.getItemName(), savedItem.getMaterial(), savedItem.getKarat(), savedItem.getGrossWeight(), savedItem.getWastage(), savedItem.getNetWeight(), savedItem.getGoldPrice(), savedItem.getCostOfStone(), savedItem.getManufactureCost(), savedItem.getDescription(), savedItem.getTotalCost(), savedItem.getItemImageUrl(), savedItem.getItemVideoUrl());
     }
 
 
@@ -136,6 +141,28 @@ public class ItemService{
             throw e; // Rethrow the exception for handling at a higher level
         }
         return ServletUriComponentsBuilder.fromCurrentContextPath().path("/itemImage/").path(Objects.requireNonNull(multipartFile.getOriginalFilename())).toUriString();
+    }
+
+
+    public String saveVideoLocally(MultipartFile multipartFile) throws IOException {
+        // Define the directory where you want to save the videos
+        final String UPLOAD_VID_DIR = "D:\\Development\\JewelHub\\src\\main\\resources\\static\\itemVideo";
+        System.out.println(UPLOAD_VID_DIR );
+        try {
+            // Copy the video file to the specified directory
+            Files.copy(multipartFile.getInputStream(),
+                    Paths.get(UPLOAD_VID_DIR + File.separator + multipartFile.getOriginalFilename()),
+                    StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e; // Rethrow the exception for handling at a higher level
+        }
+
+        // Return the URL of the saved video
+        return ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/video/")
+                .path(Objects.requireNonNull(multipartFile.getOriginalFilename()))
+                .toUriString();
     }
 
 }

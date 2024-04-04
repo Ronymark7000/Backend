@@ -46,7 +46,8 @@ public class CustomMapper {
                 item.getManufactureCost(),
                 item.getDescription(),
                 item.getTotalCost(),
-                item.getItemImageUrl()
+                item.getItemImageUrl(),
+                item.getItemVideoUrl()
         );
     }
 

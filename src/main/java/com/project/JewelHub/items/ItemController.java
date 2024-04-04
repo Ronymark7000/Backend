@@ -47,6 +47,7 @@ public class ItemController {
         if (item != null){
             // Fetch the image URL associated with the item
             String imageUrl = item.getItemImageUrl();
+            String videoUrl = item.getItemVideoUrl();
 
             // Create a new ItemDto with the image URL included
             Item itemWithImage = new Item(
@@ -62,7 +63,8 @@ public class ItemController {
                     item.getManufactureCost(),
                     item.getDescription(),
                     item.getTotalCost(),
-                    imageUrl // Include the image URL here
+                    imageUrl, // Include the image URL here
+                    videoUrl
             );
 
             ResponseWrapper response = new ResponseWrapper();
@@ -81,7 +83,7 @@ public class ItemController {
 
     /* ---------------------Handles request to add particular jewelry item to the inventory-------------------*/
     @PostMapping("/item")
-    private ResponseEntity<ResponseWrapper<ItemDto>> additem(@Valid @ModelAttribute ItemDto itemDto, @RequestParam("itemImage") MultipartFile itemImage) {
+    private ResponseEntity<ResponseWrapper<ItemDto>> additem(@Valid @ModelAttribute ItemDto itemDto, @RequestParam("itemImage") MultipartFile itemImage, @RequestParam("itemVideo") MultipartFile itemVideo) {
         ResponseWrapper<ItemDto> response = new ResponseWrapper<>();
         try {
             if (itemImage.isEmpty()) {
@@ -94,7 +96,7 @@ public class ItemController {
                 response.setSuccess(true);
                 response.setStatusCode(HttpStatus.CREATED.value());
 //                response.setMessage("Successfully Added where Item Code: " + item.getItemCode());
-                response.setResponse(itemService.addItem(itemDto, itemImage));
+                response.setResponse(itemService.addItem(itemDto, itemImage, itemVideo));
                 return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
             e.printStackTrace();
