@@ -2,10 +2,11 @@ package com.project.JewelHub.items;
 
 import com.project.JewelHub.util.CustomMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.ClassPathResource;
+//import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class ItemService{
                 item.getItemCode(),
                 item.getItemName(),
                 item.getMaterial(),
+                item.getCategory(),
                 item.getKarat(),
                 item.getGrossWeight(),
                 item.getWastage(),
@@ -66,6 +68,7 @@ public class ItemService{
         Item newItem = new Item();
         newItem.setItemName(itemDto.getItemName());
         newItem.setMaterial(itemDto.getMaterial());
+        newItem.setCategory(itemDto.getCategory());
         newItem.setKarat(itemDto.getKarat());
         newItem.setGrossWeight(itemDto.getGrossWeight());
         newItem.setWastage(itemDto.getWastage());
@@ -82,7 +85,7 @@ public class ItemService{
 
         System.out.println("Item Name"+savedItem.getItemName());
 
-        return new ItemDto(savedItem.getItemCode(), savedItem.getItemName(), savedItem.getMaterial(), savedItem.getKarat(), savedItem.getGrossWeight(), savedItem.getWastage(), savedItem.getNetWeight(), savedItem.getGoldPrice(), savedItem.getCostOfStone(), savedItem.getManufactureCost(), savedItem.getDescription(), savedItem.getTotalCost(), savedItem.getItemImageUrl(), savedItem.getItemVideoUrl());
+        return new ItemDto(savedItem.getItemCode(), savedItem.getItemName(), savedItem.getMaterial(), savedItem.getCategory(), savedItem.getKarat(), savedItem.getGrossWeight(), savedItem.getWastage(), savedItem.getNetWeight(), savedItem.getGoldPrice(), savedItem.getCostOfStone(), savedItem.getManufactureCost(), savedItem.getDescription(), savedItem.getTotalCost(), savedItem.getItemImageUrl(), savedItem.getItemVideoUrl());
     }
 
 
@@ -96,6 +99,7 @@ public class ItemService{
 
             existingItem.setItemName(updatedItem.getItemName());
             existingItem.setMaterial(updatedItem.getMaterial());
+            existingItem.setCategory(updatedItem.getCategory());
             existingItem.setKarat(updatedItem.getKarat());
             existingItem.setGrossWeight(updatedItem.getGrossWeight());
             existingItem.setWastage(updatedItem.getWastage());
@@ -130,8 +134,8 @@ public class ItemService{
     /*------------------------------Method to Save Image Locally---------------------*/
     public String saveImageLocally(MultipartFile multipartFile) throws IOException {
         System.out.println("Is image working");
-//        final String UPLOAD_DIRS = new ClassPathResource("static/itemImage").getFile().getAbsolutePath();
         final String UPLOAD_DIRS = "D:\\Development\\JewelHub\\src\\main\\resources\\static\\itemImage";
+//        final String UPLOAD_DIRS = new ClassResourcePath("/static/itemImage").getFile().getAbsolutePath();
 
         System.out.println(UPLOAD_DIRS );
         try {

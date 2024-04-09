@@ -26,6 +26,9 @@ public class Item {
     @Pattern ( regexp = "^(Gold|Silver)$", message = "Material is compulsory")
     private String material;
 
+    @Column (nullable = false, length = 20)
+    private String category;
+
     @Column (nullable = false)
     @NotNull(message = "Enter the Karat of the Item")
     private int karat;

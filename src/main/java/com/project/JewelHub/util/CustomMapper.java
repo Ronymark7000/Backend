@@ -37,6 +37,7 @@ public class CustomMapper {
                 item.getItemCode(),
                 item.getItemName(),
                 item.getMaterial(),
+                item.getCategory(),
                 item.getKarat(),
                 item.getGrossWeight(),
                 item.getWastage(),

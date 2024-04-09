@@ -27,7 +27,12 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        if (request.getServletPath().contains("/api/auth/") || request.getServletPath().contains("/store/")) {
+        if (
+                request.getServletPath().contains("/api/auth/") ||
+                        request.getServletPath().contains("/itemImage/") ||
+                        request.getServletPath().contains("/video/") ||
+                        request.getServletPath().contains("/store/")
+        ) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -42,7 +47,7 @@ public class JwtFilter extends OncePerRequestFilter {
             request.setAttribute("user", user);
             filterChain.doFilter(request, response);
         } catch (CustomException e) {
-            System.out.println("Custom Error: " + e.getMessage());
+//            System.out.println("Custom Error: " + e.getMessage());
             ObjectMapper objectMapper = new ObjectMapper();
             ApiResponse apiResponse = new ApiResponse(false, null, e.getMessage());
             response.setContentType("application/json");

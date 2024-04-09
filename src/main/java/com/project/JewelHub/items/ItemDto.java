@@ -10,6 +10,7 @@ public class ItemDto {
     private int itemCode;
     private String itemName;
     private String material;
+    private String category;
     private int karat;
     private double grossWeight;
     private String wastage;

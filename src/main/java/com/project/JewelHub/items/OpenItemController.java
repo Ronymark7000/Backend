@@ -29,6 +29,7 @@ public class OpenItemController {
         List<ItemDto> item = itemService.getAllItems();
         ResponseWrapper response = new ResponseWrapper();
         response.setStatusCode(HttpStatus.OK.value());
+        response.setSuccess(true);
         response.setMessage("Item Collected successfully");
         response.setResponse(item);
         return ResponseEntity.ok(response);
@@ -42,6 +43,7 @@ public class OpenItemController {
         if (item != null){
             ResponseWrapper response = new ResponseWrapper();
             response.setStatusCode(HttpStatus.OK.value());
+            response.setSuccess(true);
             response.setMessage("Item Collected successfully by ID");
             response.setResponse(itemService.getItemByCode(itemCode));
             return ResponseEntity.ok(response);
