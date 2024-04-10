@@ -42,9 +42,11 @@ public class JwtFilter extends OncePerRequestFilter {
             jwtService.validateToken(jwtToken);
             Claims claims = jwtService.decodeToken(jwtToken);
             User user = jwtService.claimsToUser(claims);
+//            int userId = claims.get("userId", Integer.class);
             jwtService.validateAuthority(user, request);
 //             Continue with the filter chain
             request.setAttribute("user", user);
+//            request.setAttribute("userId", userId);
             filterChain.doFilter(request, response);
         } catch (CustomException e) {
 //            System.out.println("Custom Error: " + e.getMessage());

@@ -41,13 +41,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/admin/**").hasRole("Admin")
                         /*.requestMatchers("/api/admin/**").authenticated()*/
                         .anyRequest().authenticated());
-//                      .requestMatchers(HttpMethod.GET,"/").hasAnyRole("user","admin")
-//                      .requestMatchers(HttpMethod.GET,"/allUsers").hasAnyRole("user","admin")
-//                      .requestMatchers(HttpMethod.GET,"/addUser").hasRole("admin")
-//                      .requestMatchers(HttpMethod.POST,"/save").hasRole("admin")
-//                      .requestMatchers(HttpMethod.GET,"/update/**").hasRole("admin")
-//                      .requestMatchers(HttpMethod.PUT,"/update/**").hasRole("admin")
-//                      .requestMatchers(HttpMethod.GET,"/deleteUser/**").hasRole("admin")
+//
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
