@@ -30,7 +30,7 @@ public class BooklistController {
             List<BooklistDto> booklistItems = booklistService.getItemsFromList(userId);
 
             // Return a response with the fetched items
-            return new ResponseWrapper(true, 200, "Cart fetched successfully", booklistItems);
+            return new ResponseWrapper(true, 200, "Item fetched successfully", booklistItems);
         } else {
             // User object not found in request, return error response
             return new ResponseWrapper(false, 400, "User attribute not found in request", null);
@@ -78,12 +78,16 @@ public class BooklistController {
 
     @DeleteMapping("/{bookListId}")
     public ResponseWrapper deleteBookFromCart(@PathVariable long bookListId, HttpServletRequest request)  {
-        Integer userId = (Integer) request.getAttribute("userId");
-        booklistService.removeItemFromBooklist(bookListId, userId);
+        User user = (User) request.getAttribute("user");
+
+            // Extract the user ID from the user object
+            int userId = user.getUserId();
+
+            booklistService.removeItemFromBooklist(bookListId, userId);
         //        response.setStatusCode(HttpStatus.OK.value());
 //        response.setMessage("User deleted successfully");
 //        response.setResponse(cartId);
-        return new ResponseWrapper(true, 200, ("Cart Deleted Successfully"), bookListId);
+        return new ResponseWrapper(true, 200, ("Item Deleted Successfully"), bookListId);
 
     }
 
