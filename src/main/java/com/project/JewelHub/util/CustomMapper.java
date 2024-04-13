@@ -2,6 +2,7 @@ package com.project.JewelHub.util;
 
 import com.project.JewelHub.items.ItemDto;
 import com.project.JewelHub.items.Item;
+import com.project.JewelHub.order.Order;
 import com.project.JewelHub.user.User;
 import com.project.JewelHub.user.UserRepo;
 import com.project.JewelHub.user.dtos.UserDto;
@@ -18,9 +19,9 @@ import java.util.Optional;
 
 @Component
 public class CustomMapper {
-    public static UserDto mapUserDto(User user){
+    public static UserDto mapUserDto(User user) {
 
-        return new UserDto(user.getUserId(),user.getFirstname(), user.getLastname(), user.getEmail(), user.getRole(), user.getContact(), user.isEnabled());
+        return new UserDto(user.getUserId(), user.getFirstname(), user.getLastname(), user.getEmail(), user.getRole(), user.getContact(), user.isEnabled());
     }
 
     public static List<UserDto> mapUserDtos(List<User> users) {
@@ -61,21 +62,26 @@ public class CustomMapper {
         return itemDtos;
     }
 
-    @Service
-    @RequiredArgsConstructor
-    public static class CustomUserDetailService implements UserDetailsService {
+    public static Order mapOrders(Order order) {
 
-        private final UserRepo userRepo;
-
-        @Override
-        public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-            Optional<User> userOptional = userRepo.findUserByEmail(email);
-            User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
-            return new CustomUserDetail(user);
-        }
-
+        return new Order(order.getOrderId(), order.getOrderDate(), order.getCustomerName(), order.getContact(), order.getOrderName(), order.getDescription(), order.getEstimatedWeight(), order.getAdvancePayment(), order.getDeliveryDate(), order.isOrderStatus());
     }
-}
+
+        @Service
+        @RequiredArgsConstructor
+        public static class CustomUserDetailService implements UserDetailsService {
+
+            private final UserRepo userRepo;
+
+            @Override
+            public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+                Optional<User> userOptional = userRepo.findUserByEmail(email);
+                User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+                return new CustomUserDetail(user);
+            }
+
+        }
+    }
 
 
 
