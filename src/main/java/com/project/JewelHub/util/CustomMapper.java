@@ -49,7 +49,8 @@ public class CustomMapper {
                 item.getDescription(),
                 item.getTotalCost(),
                 item.getItemImageUrl(),
-                item.getItemVideoUrl()
+                item.isAvailable()
+//                ,item.getItemVideoUrl()
         );
     }
 

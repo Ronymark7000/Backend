@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @RestController
@@ -47,7 +48,7 @@ public class ItemController {
         if (item != null){
             // Fetch the image URL associated with the item
             String imageUrl = item.getItemImageUrl();
-            String videoUrl = item.getItemVideoUrl();
+//            String videoUrl = item.getItemVideoUrl();
 
             // Create a new ItemDto with the image URL included
             Item itemWithImage = new Item(
@@ -65,7 +66,8 @@ public class ItemController {
                     item.getDescription(),
                     item.getTotalCost(),
                     imageUrl, // Include the image URL here
-                    videoUrl
+                    item.isAvailable()
+//                    ,videoUrl
             );
 
             ResponseWrapper response = new ResponseWrapper();
@@ -84,7 +86,7 @@ public class ItemController {
 
     /* ---------------------Handles request to add particular jewelry item to the inventory-------------------*/
     @PostMapping("/item")
-    private ResponseEntity<ResponseWrapper<ItemDto>> additem(@Valid @ModelAttribute ItemDto itemDto, @RequestParam("itemImage") MultipartFile itemImage, @RequestParam("itemVideo") MultipartFile itemVideo) {
+    private ResponseEntity<ResponseWrapper<ItemDto>> additem(@Valid @ModelAttribute ItemDto itemDto, @RequestParam("itemImage") MultipartFile itemImage) { //,@RequestParam("itemVideo") MultipartFile itemVideo
         ResponseWrapper<ItemDto> response = new ResponseWrapper<>();
         try {
             if (itemImage.isEmpty()) {
@@ -97,13 +99,28 @@ public class ItemController {
                 response.setSuccess(true);
                 response.setStatusCode(HttpStatus.CREATED.value());
 //                response.setMessage("Successfully Added where Item Code: " + item.getItemCode());
-                response.setResponse(itemService.addItem(itemDto, itemImage, itemVideo));
+                response.setResponse(itemService.addItem(itemDto, itemImage)); //, itemVideo
                 return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
             e.printStackTrace();
             response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
             // Handle other exceptions as needed
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+    @PatchMapping("/{itemCode}/availability")
+    public ResponseEntity<Item> updateItemAvailability(@PathVariable int itemCode, @RequestBody Map<String, Boolean> request) {
+        Boolean available = request.get("available");
+        if (available != null) {
+            Item updatedItem = itemService.updateItemAvailability(itemCode, available);
+            if (updatedItem != null) {
+                return ResponseEntity.ok(updatedItem);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } else {
+            return ResponseEntity.badRequest().build();
         }
     }
 

@@ -65,8 +65,13 @@ public class Item {
     @Column(name = "image")
     private String itemImageUrl;
 
-    @Column(name = "video")
-    private String itemVideoUrl;
+    @Column(name = "available")
+    private boolean available;
+
+
+
+//    @Column(name = "video")
+//    private String itemVideoUrl;
 
 //    public Item( String itemName, String material, int karat, double grossWeight, String wastage, double netWeight, int goldPrice, int costOfStone, int manufactureCost, String description, int totalCost, String itemImageUrl) {
 //

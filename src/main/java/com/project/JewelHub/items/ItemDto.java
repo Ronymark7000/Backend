@@ -21,7 +21,8 @@ public class ItemDto {
     private String description;
     private int totalCost;
     private String itemImageUrl;
-    private String itemVideoUrl;
+    private boolean available;
+//    private String itemVideoUrl;
 }
 
 

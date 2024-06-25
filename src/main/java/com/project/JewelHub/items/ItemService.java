@@ -3,6 +3,7 @@ package com.project.JewelHub.items;
 import com.project.JewelHub.util.CustomMapper;
 import lombok.RequiredArgsConstructor;
 //import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -26,7 +27,7 @@ public class ItemService{
 
     /*------------------------------Method to Display All Jewelry Items---------------------*/
     public List<ItemDto> getAllItems() {
-        List<Item> item = new ArrayList<>(itemRepo.findAll());
+        List<Item> item = new ArrayList<>(itemRepo.findAll(Sort.by("itemCode")));
 
         List<ItemDto> itemDtos= CustomMapper.mapItemDtos(item);
         return itemDtos;
@@ -51,19 +52,21 @@ public class ItemService{
                 item.getDescription(),
                 item.getTotalCost(),
                 item.getItemImageUrl(),
-                item.getItemVideoUrl()
+                item.isAvailable()
+//                ,item.getItemVideoUrl()
         );
     }
 
 
 
     /*------------------------------Method to Add Jewelry Items to the Inventory---------------------*/
-    public ItemDto addItem(ItemDto itemDto, MultipartFile imageFile, MultipartFile videoFile) throws IOException{
+    public ItemDto addItem(ItemDto itemDto, MultipartFile imageFile) throws IOException{
+//        , MultipartFile videoFile
         String itemImageUrl = saveImageLocally(imageFile);
         System.out.println("ImageUrl---->"+ itemImageUrl);
 
-        String itemVideoUrl = saveVideoLocally(videoFile);
-        System.out.println("VideoUrl---->"+ itemVideoUrl);
+//        String itemVideoUrl = saveVideoLocally(videoFile);
+//        System.out.println("VideoUrl---->"+ itemVideoUrl);
 
         Item newItem = new Item();
         newItem.setItemName(itemDto.getItemName());
@@ -79,13 +82,14 @@ public class ItemService{
         newItem.setDescription(itemDto.getDescription());
         newItem.setTotalCost(itemDto.getTotalCost());
         newItem.setItemImageUrl(itemImageUrl);
-        newItem.setItemVideoUrl(itemVideoUrl);
+//        newItem.setItemVideoUrl(itemVideoUrl);
 
         Item savedItem =  itemRepo.save(newItem);
 
         System.out.println("Item Name"+savedItem.getItemName());
 
-        return new ItemDto(savedItem.getItemCode(), savedItem.getItemName(), savedItem.getMaterial(), savedItem.getCategory(), savedItem.getKarat(), savedItem.getGrossWeight(), savedItem.getWastage(), savedItem.getNetWeight(), savedItem.getGoldPrice(), savedItem.getCostOfStone(), savedItem.getManufactureCost(), savedItem.getDescription(), savedItem.getTotalCost(), savedItem.getItemImageUrl(), savedItem.getItemVideoUrl());
+        return new ItemDto(savedItem.getItemCode(), savedItem.getItemName(), savedItem.getMaterial(), savedItem.getCategory(), savedItem.getKarat(), savedItem.getGrossWeight(), savedItem.getWastage(), savedItem.getNetWeight(), savedItem.getGoldPrice(), savedItem.getCostOfStone(), savedItem.getManufactureCost(), savedItem.getDescription(), savedItem.getTotalCost(), savedItem.getItemImageUrl(), savedItem.isAvailable());
+//        , savedItem.getItemVideoUrl()
     }
 
 
@@ -117,6 +121,22 @@ public class ItemService{
         } else {
             // Handle the scenario when the item with the given itemCode is not found
             return  null;
+        }
+    }
+
+    public Item updateItemAvailability(int itemCode, boolean available) {
+        Optional<Item> optionalItem = itemRepo.findById(itemCode);
+        if (optionalItem.isPresent()) {
+            Item existingItem = optionalItem.get();
+
+            // Update the availability status
+            existingItem.setAvailable(available);
+
+            // Save the updated item back to the database
+            return itemRepo.save(existingItem);
+        } else {
+            // Handle the scenario when the item with the given itemCode is not found
+            return null;
         }
     }
 

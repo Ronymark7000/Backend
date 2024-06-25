@@ -19,7 +19,8 @@ public class MetalPriceService {
 
     private final MetalPriceRepo metalPriceRepo;
 
-    @Scheduled(cron = "0 15 11 * * *")// Scheduled for 11:15 AM every day
+    @Scheduled(cron = "0 0 11 * * *")// Scheduled for 11:15 AM every day
+//    (seconds ... minutes...hour...day...month...year)
     public void scrapeAndSaveMetalPrices() {
         System.out.println("Successfully got Gold & Silver Price at 11:15 AM ");
         List<Price.GoldData> scrapedData = scrapeGoldPrices();
